@@ -54,8 +54,8 @@ extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "moveCell", for: indexPath)
         guard let pokemon = pokemon else {return UITableViewCell() }
-        let move = pokemon.moves[indexPath.row]
-        cell.textLabel?.text = move
+        let moveDict = pokemon.moves[indexPath.row]
+        cell.textLabel?.text = moveDict.move.name
         return cell
     }
 }

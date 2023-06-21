@@ -12,7 +12,7 @@ struct Pokemon: Decodable {
     let id: Int
     let moves: [MovesDict]
     let name: String
-    let sprite: SpriteDict
+    let sprites: SpriteDict
     
 }
 
