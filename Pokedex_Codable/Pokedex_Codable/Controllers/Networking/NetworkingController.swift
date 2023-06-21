@@ -24,7 +24,7 @@ class NetworkingController {
         URLSession.shared.dataTask(with: finalURL) { dTaskData, _, error in
             if let error = error {
                 print("Encountered error: \(error.localizedDescription)")
-                completion(.failure(.thrownError(<#T##Error#>)))
+                completion(.failure(.thrownError(error)))
             }
             
             guard let pokemonData = dTaskData else {return}
@@ -39,6 +39,35 @@ class NetworkingController {
         }.resume()
     }
     
+    static func fetchPokdex(completion: @escaping (Result<PokedexTopLevel,ResultError>) -> Void) {
+        
+        guard let baseURL = URL(string: baseURLString) else {return}
+        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
+        urlComponents?.path = "/api/v2/pokemon"
+        guard let finalURL = urlComponents?.url else {return}
+        print(finalURL)
+        
+        
+        URLSession.shared.dataTask(with: finalURL) { dTaskData, _, error in
+            if let error = error {
+                print("Encountered error: \(error.localizedDescription)")
+                completion(.failure(.thrownError(error)))
+            }
+            
+            guard let pokemonData = dTaskData else {return}
+            
+            do {
+                let pokemon = try JSONDecoder().decode(PokedexTopLevel.self, from: pokemonData)
+                completion(.success(pokemon))
+            } catch {
+                print("Encountered error when decoding the data:", error.localizedDescription)
+                completion(.failure(.unableToDecode))
+            }
+        }.resume()
+        
+        
+        
+    }
     
     static func fetchImage(for pokemon: Pokemon, completetion: @escaping (Result<UIImage, ResultError>) -> Void) {
         guard let imageURL = URL(string: pokemon.sprites.frontShiny) else {return} // We had to change where the information was from the model
@@ -46,13 +75,13 @@ class NetworkingController {
         URLSession.shared.dataTask(with: imageURL) { data, _, error in
             if let error = error {
                 print("There was an error", error.localizedDescription)
-                completetion(.failure(.thrownError(error))
-                             }
-                             guard let data = data else {
-                    return
-                }
-                             guard let pokemonImage = UIImage(data: data) else {return}
-                             completetion(.success(pokemonImage))
-                             }.resume()
-                }
-                }// end
+                completetion(.failure(.thrownError(error)))
+            }
+            guard let data = data else {
+                return
+            }
+            guard let pokemonImage = UIImage(data: data) else {return}
+            completetion(.success(pokemonImage))
+        }.resume()
+    }
+}// end

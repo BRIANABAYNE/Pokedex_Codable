@@ -20,7 +20,7 @@ struct ResultDict: Decodable{
     let name: String
     let url: String
     
-
+    
 }
 
 
