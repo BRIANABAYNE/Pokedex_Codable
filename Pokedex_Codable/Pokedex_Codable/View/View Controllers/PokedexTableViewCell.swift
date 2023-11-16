@@ -11,15 +11,15 @@ class PokedexTableViewCell: UITableViewCell {
     
     
     // MARK: - Outlets
-    
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var pokemonNameLabel: UILabel!
     @IBOutlet weak var pokemonIdLabel: UILabel!
     
+    // MARK: - Properies
     var pokemon: Pokemon?
     var PokemonSprite: UIImage?
-    // MARK: - Methods
     
+    // MARK: - Methods
     func updateViews(pokemonResult:ResultDict) {
         pokemonNameLabel.text = pokemonResult.name
         NetworkingController.fetchPokemon(with: pokemonResult.name) { [weak self] result in
@@ -30,7 +30,6 @@ class PokedexTableViewCell: UITableViewCell {
             case.failure(let error):
                 print(error.errorDescription!)
             }
-            
         }
     }
     func fetchPokemonImage(pokemon: Pokemon) {
@@ -47,7 +46,5 @@ class PokedexTableViewCell: UITableViewCell {
                 print(failure.errorDescription!)
             }
         }
-        
     }
-    
 }

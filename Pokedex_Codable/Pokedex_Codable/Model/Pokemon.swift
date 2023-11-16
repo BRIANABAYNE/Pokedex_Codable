@@ -13,18 +13,15 @@ struct Pokemon: Decodable {
     let moves: [MovesDict]
     let name: String
     let sprites: SpriteDict
-    
 }
 
 struct AbilityDict: Decodable {
     let ability: Ability
-    
 }
 
 struct Ability: Decodable {
     let name: String
     let url: String
-    
 }
 
 struct MovesDict: Decodable {
@@ -36,12 +33,11 @@ struct Move: Decodable {
     let url: String
 }
 
-
 struct SpriteDict: Decodable {
     private enum CodingKeys: String, CodingKey {
         case frontShiny = "front_shiny"
-        
     }
+    
     let frontShiny: String
 }
 

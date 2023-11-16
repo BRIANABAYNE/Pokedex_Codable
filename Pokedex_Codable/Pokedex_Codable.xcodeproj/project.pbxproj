@@ -49,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A5BCC9E2B069E620093AF12 /* Storybords */ = {
+			isa = PBXGroup;
+			children = (
+				418FA67A27B2349D00ABEC96 /* LaunchScreen.storyboard */,
+				418FA67527B2349C00ABEC96 /* Main.storyboard */,
+			);
+			path = Storybords;
+			sourceTree = "<group>";
+		};
 		418FA66327B2349C00ABEC96 = {
 			isa = PBXGroup;
 			children = (
@@ -68,10 +77,10 @@
 		418FA66E27B2349C00ABEC96 /* Pokedex_Codable */ = {
 			isa = PBXGroup;
 			children = (
-				418FA68827B2371500ABEC96 /* Controllers */,
 				418FA68727B236DE00ABEC96 /* Model */,
-				418FA67527B2349C00ABEC96 /* Main.storyboard */,
-				418FA67A27B2349D00ABEC96 /* LaunchScreen.storyboard */,
+				418FA68A27B2372C00ABEC96 /* Networking */,
+				418FA68827B2371500ABEC96 /* View */,
+				3A5BCC9E2B069E620093AF12 /* Storybords */,
 				418FA68427B2366E00ABEC96 /* Supporting Files */,
 			);
 			path = Pokedex_Codable;
@@ -97,13 +106,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		418FA68827B2371500ABEC96 /* Controllers */ = {
+		418FA68827B2371500ABEC96 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				418FA68A27B2372C00ABEC96 /* Networking */,
 				418FA68927B2372100ABEC96 /* View Controllers */,
 			);
-			path = Controllers;
+			path = View;
 			sourceTree = "<group>";
 		};
 		418FA68927B2372100ABEC96 /* View Controllers */ = {

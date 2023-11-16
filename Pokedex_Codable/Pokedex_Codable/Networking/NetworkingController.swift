@@ -9,9 +9,8 @@ import Foundation
 import UIKit.UIImage
 
 class NetworkingController {
-    
+
     private static let baseURLString = "https://pokeapi.co"
-    
     static func fetchPokemon(with searchTerm: String, completion: @escaping (Result<Pokemon, ResultError>) -> Void) {
         
         guard let baseURL = URL(string: baseURLString) else {return}
@@ -64,9 +63,6 @@ class NetworkingController {
                 completion(.failure(.unableToDecode))
             }
         }.resume()
-        
-        
-        
     }
     
     static func fetchImage(for pokemon: Pokemon, completetion: @escaping (Result<UIImage, ResultError>) -> Void) {
@@ -84,4 +80,4 @@ class NetworkingController {
             completetion(.success(pokemonImage))
         }.resume()
     }
-}// end
+}
